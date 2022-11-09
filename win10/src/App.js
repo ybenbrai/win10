@@ -1,4 +1,5 @@
 import start_menu from "./icons/start_menu.png";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import folder from "./icons/folder.png";
 import mozila from "./icons/mozila.png";
 import google from "./icons/google.png";
@@ -6,12 +7,32 @@ import kubernetes from "./icons/kubernetes.png";
 import docker from "./icons/docker.png";
 import notification from "./icons/notification.png";
 import vlc from "./icons/vlc.png";
+import windows_store from "./icons/windows_store.png";
+import speaker from "./icons/speaker.png";
 import "./App.css";
+import {useState} from 'react';
 
 function App() {
+  const [isHovering, setIsHovering] = useState(false);
+  const handleStartClick = () => {
+    if(isHovering === false)
+      setIsHovering(true);
+    else
+    setIsHovering(false);
+  };
+
+   // on click on the openFolder function, it will open a dragable window
+  const openFolder = () => {
+    const folder = document.getElementById("folder");
+    folder.style.display = "block";
+  };
   // variable filled with real time and date
-  let time = new Date().toLocaleTimeString();
+  let time = new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   let date = new Date().toLocaleDateString();
+
   date = date.split("/").join(".") + "\n" + time;
   return (
     <>
@@ -43,19 +64,37 @@ function App() {
             <div className="desktop_icon_title">vlc media player</div>
           </div>
         </desktop>
+        {isHovering && (
+          <div className="start_menu">
+            <div className="start_menu_top">
+            <img src={windows_store} alt="start menu" />
+              </div>
+                  </div>
+        )}
+        
       </div>
       <div className="taskbar">
         <div className="icons">
-          <img src={start_menu} alt="start menu" />
+          <img onClick={handleStartClick} className="start_hover" src={start_menu} alt="start menu" />
+          <div className="Search">
+            <input type="text" placeholder="Use Cartona to search" />
+          </div>
           <img src={folder} alt="folder" />
           <img src={google} alt="google" />
         </div>
         {/* div that containe date and time as windows 10 taskbar */}
         <div className="control_center">
-          <img src={notification} alt="notification" />
+          <div>
+            <img src={notification} alt="notification" />
+          </div>
 
           {/* windows 10 date and time */}
-          <div className="date_time">{date}</div>
+          <label>{date}</label>
+          {/* div that containe speaker icon */}
+          <div className="speaker">
+            <img src={speaker} alt="speaker" />
+          </div>
+          <ArrowDropUpIcon className="arrow" />
         </div>
       </div>
     </>
