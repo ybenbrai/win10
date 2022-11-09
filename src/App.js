@@ -10,18 +10,19 @@ import vlc from "./icons/vlc.png";
 import windows_store from "./icons/windows_store.png";
 import speaker from "./icons/speaker.png";
 import "./App.css";
-import {useState} from 'react';
-
+import { useState } from "react";
+import Draggable from "react-draggable";
+import CloseIcon from "@mui/icons-material/Close";
+import CropSquareIcon from "@mui/icons-material/CropSquare";
+import RemoveIcon from "@mui/icons-material/Remove";
 function App() {
   const [isHovering, setIsHovering] = useState(false);
   const handleStartClick = () => {
-    if(isHovering === false)
-      setIsHovering(true);
-    else
-    setIsHovering(false);
+    if (isHovering === false) setIsHovering(true);
+    else setIsHovering(false);
   };
 
-   // on click on the openFolder function, it will open a dragable window
+  // on click on the openFolder function, it will open a dragable window
   const openFolder = () => {
     const folder = document.getElementById("folder");
     folder.style.display = "block";
@@ -37,6 +38,30 @@ function App() {
   return (
     <>
       <div className="Windows">
+        <Draggable className="dragable">
+          <div className="folder_window">
+            <div className="top_of_window">
+              {/* </div> */}
+              {/* close button of window of windows 10 */}
+              <div className="right_buttons">
+                <div className="close_button">
+                  <CloseIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <CropSquareIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <RemoveIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+              </div>
+              <div className="window_title">
+                {/* <div className="window_title_left"> */}
+                <img src={folder} alt="folder" />
+                <p>Folder</p>
+              </div>
+            </div>
+          </div>
+        </Draggable>
         <desktop>
           <div className="desktop_icons">
             <img src={google} alt="start menu" />
@@ -67,15 +92,19 @@ function App() {
         {isHovering && (
           <div className="start_menu">
             <div className="start_menu_top">
-            <img src={windows_store} alt="start menu" />
-              </div>
-                  </div>
+              <img src={windows_store} alt="start menu" />
+            </div>
+          </div>
         )}
-        
       </div>
       <div className="taskbar">
         <div className="icons">
-          <img onClick={handleStartClick} className="start_hover" src={start_menu} alt="start menu" />
+          <img
+            onClick={handleStartClick}
+            className="start_hover"
+            src={start_menu}
+            alt="start menu"
+          />
           <div className="Search">
             <input type="text" placeholder="Use Cartona to search" />
           </div>
