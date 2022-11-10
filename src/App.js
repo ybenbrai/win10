@@ -17,26 +17,58 @@ import CropSquareIcon from "@mui/icons-material/CropSquare";
 import RemoveIcon from "@mui/icons-material/Remove";
 function App() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isLock, setIsLock] = useState(false);
+
+  const handleWindowClose = () => {
+    let display = document.getElementsByClassName("folder_window")[0];
+    console.log("here", display[1]);
+    display.style.display = "none";
+  };
+  const handleWindowOpen = () => {
+    let display = document.getElementsByClassName("folder_window")[0];
+    console.log("here", display[1]);
+    display.style.display = "flex";
+  };
   const handleStartClick = () => {
     if (isHovering === false) setIsHovering(true);
     else setIsHovering(false);
   };
+  const handleLockScreenClick = () => {
+    console.log("lock");
+    if (isLock === true) setIsLock(false);
+    else setIsLock(true);
+  };
 
   // on click on the openFolder function, it will open a dragable window
-  const openFolder = () => {
-    const folder = document.getElementById("folder");
-    folder.style.display = "block";
-  };
+  // const openFolder = () => {
+  //   const folder = document.getElementById("folder");
+  //   folder.style.display = "block";
+  // };
   // variable filled with real time and date
-  let time = new Date().toLocaleTimeString([], {
+  let time = new Date().toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
   });
   let date = new Date().toLocaleDateString();
+  let dateOnly = new Date().toLocaleDateString("en-GB", {
+    month: "numeric",
+    year: "numeric",
+    weekday: "long",
+    day: "numeric",
+  });
 
   date = date.split("/").join(".") + "\n" + time;
   return (
     <>
+      {!isLock && (
+        <div className="lockscreen" onClick={handleLockScreenClick}>
+          <div className="lockscreen_date">
+            <label>{time + "\n"}</label>
+            <label>{dateOnly}</label>
+          </div>
+        </div>
+      )}
+
       <div className="Windows">
         <Draggable className="dragable">
           <div className="folder_window">
@@ -44,7 +76,7 @@ function App() {
               {/* </div> */}
               {/* close button of window of windows 10 */}
               <div className="right_buttons">
-                <div className="close_button">
+                <div className="close_button" onClick={handleWindowClose}>
                   <CloseIcon fontSize="small" style={{ color: "white" }} />
                 </div>
                 <div className="bigger_reduce">
@@ -57,7 +89,7 @@ function App() {
               <div className="window_title">
                 {/* <div className="window_title_left"> */}
                 <img src={folder} alt="folder" />
-                <p>Folder</p>
+                <p>Documents</p>
               </div>
             </div>
           </div>
@@ -108,7 +140,7 @@ function App() {
           <div className="Search">
             <input type="text" placeholder="Use Cartona to search" />
           </div>
-          <img src={folder} alt="folder" />
+          <img onClick={handleWindowOpen} src={folder} alt="folder" />
           <img src={google} alt="google" />
         </div>
         {/* div that containe date and time as windows 10 taskbar */}
