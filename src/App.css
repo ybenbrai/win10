@@ -66,8 +66,8 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   color: #ffffff;
   padding: 0;
   margin: 30px 30px 10px 30px;
@@ -80,6 +80,7 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  font-size: 13px;
   width: 60px;
   height: 20px;
   color: #ffffff;
@@ -225,28 +226,39 @@
   border-width: 20px;
   border-color: black;
   /* display: flex; */
-  display: none;
-  flex-direction: row;
-  width: 500px;
-  height: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 600px;
   background-color: white;
   padding: 0;
   z-index: 1;
 }
 .top_of_window {
-  display: block;
-  width: 500px;
+  display: inline-table;
+  width: 800px;
   height: 30px;
   background-color: #0077d7;
   z-index: 1;
   overflow: auto;
   padding: 0;
 }
+.under_top_of_window {
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 1px;
+  align-items: center;
+  display: flex;
+  bottom: 0;
+  width: 799px;
+  height: 25px;
+  /* background-color: red; */
+  padding: 0;
+}
 
 .close_button {
   float: right;
   background-color: #0077d7;
-  width: 30px;
   height: 30px;
   z-index: 1;
   right: 0;
@@ -322,29 +334,63 @@
   background-image: url(../public/images/lock_screen_background.webp);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 98vh;
+  height: 100vh;
   margin: 0;
-  padding: 20px 0px 20px 0px;
+  /* padding: 2px 2px 2px 2px; */
   width: 100%;
   z-index: 2;
   /* change background-image width to fill screen */
   background-size: 100% 100%;
 }
 .lockscreen_date {
-  margin: 62% 5%;
-  width: 25%;
-  /* background-color: red; */
+  margin: 20px;
+  bottom: 0;
+  width: 30%;
   position: absolute;
   /* transform: translate(-50%, -50%); */
   color: white;
-  font-size: 80px;
+  font-size: 40px;
   font-family: "Segoe UI Light";
-  font-weight: 10;
   /* text-align: center; */
   /* z-index: 1; */
   display: flex;
   flex-direction: column;
 }
-.dragable {
-  display: none;
+.window_menu_titles p {
+  border-radius: 5px;
+  float: left;
+  display: flex;
+  align-items: center;
+  width: 20;
+  height: 30px;
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.window_menu_titles p:hover {
+  border: 0.1px solid darkgray;
+  border-bottom: none;
+  width: 20;
+  height: 30px;
+  cursor: pointer;
+  border-color: darkgray;
+  filter: brightness(110%);
+}
+.Quick_access {
+  align-items: center;
+
+  border-top-left-radius: none;
+  border: 0.1px solid darkgray;
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  height: 100%;
+  padding: 0;
+  z-index: 1;
+}
+.Quick_access p {
+  margin: 5;
+  padding: 0;
+  z-index: 1;
+  padding: 0;
 }

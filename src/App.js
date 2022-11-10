@@ -92,6 +92,24 @@ function App() {
                 <p>Documents</p>
               </div>
             </div>
+            <div className="under_top_of_window">
+              <div className="window_menu_titles">
+                <p>File</p>
+                <p>Home</p>
+                <p>Share</p>
+                <p>View</p>
+              </div>
+            </div>
+            <div className="Quick_access">
+              <p>Quick access</p>
+              <p>Desktop</p>
+              <p>Downloads</p>
+              <p>Documents</p>
+              <p>Pictures</p>
+              <p>Music</p>
+              <p>Porn</p>
+              <p>personal_Items</p>
+            </div>
           </div>
         </Draggable>
         <desktop>
@@ -107,6 +125,14 @@ function App() {
             <img src={folder} alt="start menu" />
             <div className="desktop_icon_title">vagrant machines</div>
           </div>
+          <div className="desktop_icons">
+            <img src={folder} alt="start menu" />
+            <div className="desktop_icon_title">1337</div>
+          </div>
+          <div className="desktop_icons">
+            <img onClick={handleWindowOpen} src={folder} alt="start menu" />
+            <div className="desktop_icon_title">Projects</div>
+          </div>
 
           <div className="desktop_icons">
             <img src={docker} alt="start menu" />
@@ -115,10 +141,6 @@ function App() {
           <div className="desktop_icons">
             <img src={kubernetes} alt="start menu" />
             <div className="desktop_icon_title">kubernetes</div>
-          </div>
-          <div className="desktop_icons">
-            <img src={vlc} alt="start menu" />
-            <div className="desktop_icon_title">vlc media player</div>
           </div>
         </desktop>
         {isHovering && (
