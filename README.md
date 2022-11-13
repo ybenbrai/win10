@@ -1,4 +1,5 @@
-# to check the project check `https://khimya.net/`
+# Link for the Project preview :
+`https://khimya.net/`
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
