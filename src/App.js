@@ -4,9 +4,9 @@ import folder from "./icons/folder.png";
 import mozila from "./icons/mozila.png";
 import google from "./icons/google.png";
 import kubernetes from "./icons/kubernetes.png";
+import pdf from "./icons/pdf.png";
 import docker from "./icons/docker.png";
 import notification from "./icons/notification.png";
-import vlc from "./icons/vlc.png";
 import windows_store from "./icons/windows_store.png";
 import speaker from "./icons/speaker.png";
 import "./App.css";
@@ -15,10 +15,22 @@ import Draggable from "react-draggable";
 import CloseIcon from "@mui/icons-material/Close";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
 import RemoveIcon from "@mui/icons-material/Remove";
+import English from "./icons/English.pdf";
+import French from "./icons/French.pdf";
 function App() {
   const [isHovering, setIsHovering] = useState(false);
   const [isLock, setIsLock] = useState(false);
-
+  // function that open a pdf file on click
+  const handleEnglishResume = () => {
+    let display = document.getElementsByClassName("Resumes_en")[0];
+    console.log("here", display);
+    display.style.display = "flex";
+  };
+  const handleFrenchResume = () => {
+    let display = document.getElementsByClassName("Resumes_fr")[0];
+    console.log("here", display);
+    display.style.display = "flex";
+  };
   const handleWindowClose = () => {
     let display = document.getElementsByClassName("folder_window")[0];
     console.log("here", display[1]);
@@ -70,7 +82,19 @@ function App() {
       )}
 
       <div className="Windows">
-        <Draggable className="dragable">
+        <Draggable>
+
+          <div className="Resumes_en">
+            
+            <embed src={English} width="100%" height="100%" />
+          </div>
+        </Draggable>
+        <Draggable>
+          <div className="Resumes_fr">
+            <embed src={French} width="100%" height="100%" />
+          </div>
+        </Draggable>
+        <Draggable>
           <div className="folder_window">
             <div className="top_of_window">
               {/* </div> */}
@@ -128,6 +152,14 @@ function App() {
           <div className="desktop_icons">
             <img src={folder} alt="start menu" />
             <div className="desktop_icon_title">1337</div>
+          </div>
+          <div className="desktop_icons">
+            <img onClick={handleEnglishResume} src={pdf} alt="start menu" />
+            <div className="desktop_icon_title">Resume En</div>
+          </div>
+          <div className="desktop_icons">
+            <img onClick={handleFrenchResume} src={pdf} alt="start menu" />
+            <div className="desktop_icon_title">Resume Fr</div>
           </div>
           <div className="desktop_icons">
             <img onClick={handleWindowOpen} src={folder} alt="start menu" />
