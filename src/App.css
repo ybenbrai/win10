@@ -243,6 +243,15 @@
   overflow: auto;
   padding: 0;
 }
+.top_of_windowR {
+  display: inline-table;
+  width: 800px;
+  height: 30px;
+  background-color: #0077d7;
+  z-index: 1;
+  overflow: auto;
+  padding: 0;
+}
 .under_top_of_window {
   border-color: darkgray;
   border-style: solid;
@@ -399,17 +408,24 @@
   position: absolute;
   margin: 0;
   padding: 0;
-  border: 5px solid orangered;
   width: 60%;
-  height: 80vh;
   display: none;
+  flex-direction: row;
 }
 .Resumes_fr {
   position: absolute;
   margin: 0;
   padding: 0;
-  border: 5px solid orangered;
   width: 60%;
-  height: 80vh;
   display: none;
+}
+.Resumes_embed {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  /* border: 5px solid orangered; */
+  width: 100%;
+  overflow: auto;
+  height: 90vh;
+  /* display: none; */
 }

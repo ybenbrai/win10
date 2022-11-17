@@ -23,22 +23,26 @@ function App() {
   // function that open a pdf file on click
   const handleEnglishResume = () => {
     let display = document.getElementsByClassName("Resumes_en")[0];
-    console.log("here", display);
     display.style.display = "flex";
   };
   const handleFrenchResume = () => {
     let display = document.getElementsByClassName("Resumes_fr")[0];
-    console.log("here", display);
     display.style.display = "flex";
   };
   const handleWindowClose = () => {
     let display = document.getElementsByClassName("folder_window")[0];
-    console.log("here", display[1]);
+    display.style.display = "none";
+  };
+  const handleResumeEnClose = () => {
+    let display = document.getElementsByClassName("Resumes_en")[0];
+    display.style.display = "none";
+  };
+  const handleResumeFrClose = () => {
+    let display = document.getElementsByClassName("Resumes_fr")[0];
     display.style.display = "none";
   };
   const handleWindowOpen = () => {
     let display = document.getElementsByClassName("folder_window")[0];
-    console.log("here", display[1]);
     display.style.display = "flex";
   };
   const handleStartClick = () => {
@@ -83,15 +87,56 @@ function App() {
 
       <div className="Windows">
         <Draggable>
-
           <div className="Resumes_en">
-            
-            <embed src={English} width="100%" height="100%" />
+            <div className="top_of_windowR">
+              {/* </div> */}
+              {/* close button of window of windows 10 */}
+              <div className="right_buttons">
+                <div className="close_button" onClick={handleResumeEnClose}>
+                  <CloseIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <CropSquareIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <RemoveIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+              </div>
+              <div className="window_title">
+                <img src={pdf} alt="folder" />
+                <p>Resume</p>
+              </div>
+            </div>
+            <div className="Resumes_embed">
+              <embed src={English} width="100%" height="100%" />
+            </div>
           </div>
         </Draggable>
         <Draggable>
           <div className="Resumes_fr">
-            <embed src={French} width="100%" height="100%" />
+            <div className="top_of_windowR">
+              {/* </div> */}
+              {/* close button of window of windows 10 */}
+              <div className="right_buttons">
+                <div className="close_button" onClick={handleResumeFrClose}>
+                  <CloseIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <CropSquareIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+                <div className="bigger_reduce">
+                  <RemoveIcon fontSize="small" style={{ color: "white" }} />
+                </div>
+              </div>
+              <div className="window_title">
+                {/* <div className="window_title_left"> */}
+                <img src={pdf} alt="folder" />
+                <p>Resume</p>
+              </div>
+            </div>
+            <div className="Resumes_embed">
+              <embed src={French} width="100%" height="100%" />
+            </div>
           </div>
         </Draggable>
         <Draggable>
