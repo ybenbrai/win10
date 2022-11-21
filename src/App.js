@@ -17,6 +17,7 @@ import CropSquareIcon from "@mui/icons-material/CropSquare";
 import RemoveIcon from "@mui/icons-material/Remove";
 import English from "./icons/English.pdf";
 import French from "./icons/French.pdf";
+
 function App() {
   const [isHovering, setIsHovering] = useState(false);
   const [isLock, setIsLock] = useState(false);
@@ -55,11 +56,6 @@ function App() {
     else setIsLock(true);
   };
 
-  // on click on the openFolder function, it will open a dragable window
-  // const openFolder = () => {
-  //   const folder = document.getElementById("folder");
-  //   folder.style.display = "block";
-  // };
   // variable filled with real time and date
   let time = new Date().toLocaleTimeString("en-GB", {
     hour: "2-digit",
@@ -89,8 +85,7 @@ function App() {
         <Draggable>
           <div className="Resumes_en">
             <div className="top_of_windowR">
-              {/* </div> */}
-              {/* close button of window of windows 10 */}
+
               <div className="right_buttons">
                 <div className="close_button" onClick={handleResumeEnClose}>
                   <CloseIcon fontSize="small" style={{ color: "white" }} />
@@ -115,8 +110,7 @@ function App() {
         <Draggable>
           <div className="Resumes_fr">
             <div className="top_of_windowR">
-              {/* </div> */}
-              {/* close button of window of windows 10 */}
+
               <div className="right_buttons">
                 <div className="close_button" onClick={handleResumeFrClose}>
                   <CloseIcon fontSize="small" style={{ color: "white" }} />
@@ -129,7 +123,7 @@ function App() {
                 </div>
               </div>
               <div className="window_title">
-                {/* <div className="window_title_left"> */}
+    
                 <img src={pdf} alt="folder" />
                 <p>Resume</p>
               </div>
